@@ -4,7 +4,7 @@
 
 		.model tiny
 		.code
-		org	100h
+		org 100h
 
 start:
 		mov		dx, offset message_ext
@@ -50,7 +50,7 @@ start:
 		int		21h
 		int		21h
 		
-		mov 	ah, 5Bh
+		mov		ah, 5Bh
 		mov		al, 02h
 		lea		dx, result_buffer + 2
 		int		21h
@@ -58,7 +58,7 @@ start:
 		jz		file_exists
 		
 file_opened:		
-		push	ax
+		push		ax
 		
 		xor		ax, ax
 		mov		ah, 4Eh
@@ -80,7 +80,7 @@ file_finding:
 		mov		cx, 20
 		mov		ah, 40h
 		int		21h
-		push	bx
+		push		bx
 
 find_next:
 		mov		ah, 4fh
@@ -101,10 +101,10 @@ file_exists:
 
 		
 message_ext		db		"Input extension (txt, com, ...): ", 10, 13, "$"
-message_result	db		"Input result file: ", 10, 13, "$"
-endl			db		10, 13, '$'
+message_result		db		"Input result file: ", 10, 13, "$"
+endl		db		10, 13, '$'
 ext_buffer		db		255, 0, 254 dup(?)
-result_buffer	db		255, 0, 254 dup(?)
+result_buffer		db		255, 0, 254 dup(?)
 bcontent:
 
 end start
